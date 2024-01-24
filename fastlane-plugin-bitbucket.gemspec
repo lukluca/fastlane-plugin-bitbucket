@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'fastlane-plugin-bitbucket'
   spec.version       = Fastlane::Bitbucket::VERSION
   spec.author        = 'Luca Tagliabue'
-  spec.email         = 'lu.tagliabue@reply.it'
+  spec.email         = 'homobonus-luca@hotmail.it'
 
   spec.summary       = 'Wrapper of Bitbucket rest apis'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-bitbucket"
+  spec.homepage      = "https://github.com/lukluca/fastlane-plugin-bitbucket"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
