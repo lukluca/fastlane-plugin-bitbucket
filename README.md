@@ -1,26 +1,33 @@
-# bitbucket plugin
+# bitbucket-cloud plugin
 
-[![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-bitbucket)
+[![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-bitbucket-cloud)
 
 ## Getting Started
 
 This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-bitbucket`, add it to your project by running:
 
 ```bash
-fastlane add_plugin bitbucket
+fastlane add_plugin bitbucket-cloud
 ```
 
-## About bitbucket
+## About bitbucket-cloud
 
-Wrapper of Bitbucket rest apis
+Wrapper of Bitbucket Cloud rest apis. 
 
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+The aim of this plugin is to wrap the api listed in this [wiki](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication). 
+
+For now we suppor only one api:
+
+- [Create pull request](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests/#api-repositories-workspace-repo-slug-pullrequests-post)
+
+
+For each supported api there is a plugin action available:
+
+- bitbucket_create_pull_request
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test_create_pull_request`.
 
 ## Run tests for this plugin
 

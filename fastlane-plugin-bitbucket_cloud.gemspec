@@ -1,15 +1,15 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fastlane/plugin/bitbucket/version'
+require 'fastlane/plugin/bitbucket_cloud/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fastlane-plugin-bitbucket'
-  spec.version       = Fastlane::Bitbucket::VERSION
+  spec.name          = 'fastlane-plugin-bitbucket_cloud'
+  spec.version       = Fastlane::BitbucketCloud::VERSION
   spec.author        = 'Luca Tagliabue'
-  spec.email         = 'homobonus-luca@hotmail.it'
+  spec.email         = 'lu.tagliabue@reply.it'
 
-  spec.summary       = 'Wrapper of Bitbucket rest apis'
-  spec.homepage      = "https://github.com/lukluca/fastlane-plugin-bitbucket"
+  spec.summary       = 'Wrapper of Bitbucket cloud rest apis'
+  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-bitbucket_cloud"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
