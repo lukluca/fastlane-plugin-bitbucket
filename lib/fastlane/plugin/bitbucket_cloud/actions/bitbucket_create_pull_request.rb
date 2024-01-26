@@ -63,7 +63,7 @@ module Fastlane
 
         payload = payload.to_json
 
-        puts("Plugin Bitbucket will create a new pull request from '#{options[:source_branch]}'#{destination_log} with title '#{options[:title]}'#{description_log}")
+        UI.important("Plugin Bitbucket will create a new pull request from '#{options[:source_branch]}'#{destination_log} with title '#{options[:title]}'#{description_log}")
 
         response = Excon.post(api_url, headers: headers, body: payload)
 

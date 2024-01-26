@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="9" skipped="0" failures="1" errors="0" time="0.044959" timestamp="2024-01-26T16:27:06+01:00" hostname="MacdiTagliabue.homenet.telecomitalia.it">
+<properties>
+<property name="seed" value="15319"/>
+</properties>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no username was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.005021"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no password was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.002317"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no company host name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003422"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no repository name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.005746"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no title was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003055"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run supports all platforms" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001721"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with all variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.013851"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.002520"><failure message="uninitialized constant Actions" type="NameError">Failure/Error: puts Actions.lane_context[SharedValues::BITBUCKET_CREATE_PULL_REQUEST_RESULT]
+
+NameError:
+  uninitialized constant Actions
+./spec/bitbucket_cloud_action_spec.rb:145:in `block (4 levels) in &lt;top (required)&gt;&apos;</failure></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields fails with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.004432"></testcase>
+</testsuite>
