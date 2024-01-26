@@ -1,5 +1,5 @@
 require 'fastlane/action'
-require_relative '../helper/bitbucket_helper'
+require_relative '../helper/bitbucket_cloud_helper'
 
 module Fastlane
   module Actions
