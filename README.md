@@ -1,13 +1,13 @@
-# bitbucket-cloud plugin
+# fastalane bitbucket_cloud plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-bitbucket-cloud)
 
 ## Getting Started
 
-This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-bitbucket`, add it to your project by running:
+This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `bitbucket_cloud plugin`, add it to your project by running:
 
 ```bash
-fastlane add_plugin bitbucket-cloud
+fastlane add_plugin bitbucket_cloud
 ```
 
 ## About bitbucket-cloud

@@ -1,5 +1,3 @@
-$g_body = nil
-
 describe Fastlane::Actions::BitbucketCreatePullRequestAction do
   describe '#run' do
     after :each do

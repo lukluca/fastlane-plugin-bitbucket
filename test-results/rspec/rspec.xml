@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="9" skipped="0" failures="0" errors="0" time="0.054881" timestamp="2024-01-26T17:17:19+01:00" hostname="MacdiTagliabue.homenet.telecomitalia.it">
+<testsuite name="rspec" tests="9" skipped="0" failures="0" errors="0" time="0.062163" timestamp="2024-01-30T11:55:49+01:00" hostname="Mac-di-Tagliabue.local">
 <properties>
-<property name="seed" value="52379"/>
+<property name="seed" value="28900"/>
 </properties>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no username was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003358"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no password was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001860"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no company host name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001828"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no repository name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001643"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no title was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001494"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run supports all platforms" file="./spec/bitbucket_cloud_action_spec.rb" time="0.001285"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with all variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.030731"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.002688"></testcase>
-<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields fails with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.008353"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no username was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003815"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no password was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003332"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no company host name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.002004"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no repository name was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.002353"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run raises an error if no title was given" file="./spec/bitbucket_cloud_action_spec.rb" time="0.003026"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run supports all platforms" file="./spec/bitbucket_cloud_action_spec.rb" time="0.002124"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with all variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.036402"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields succeeds with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.002264"></testcase>
+<testcase classname="spec.bitbucket_cloud_action_spec" name="Fastlane::Actions::BitbucketCreatePullRequestAction#run with required fields fails with required variables given through invocation." file="./spec/bitbucket_cloud_action_spec.rb" time="0.004569"></testcase>
 </testsuite>

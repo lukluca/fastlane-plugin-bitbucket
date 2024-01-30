@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fastlane-plugin-bitbucket_cloud (0.1.0)
+    fastlane-plugin-bitbucket-cloud (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -275,7 +275,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   fastlane (>= 2.219.0)
-  fastlane-plugin-bitbucket_cloud!
+  fastlane-plugin-bitbucket-cloud!
   pry
   rake
   rspec
