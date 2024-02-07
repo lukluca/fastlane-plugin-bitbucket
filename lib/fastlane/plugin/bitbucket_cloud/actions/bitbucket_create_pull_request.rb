@@ -51,8 +51,7 @@ module Fastlane
         unless reviewers.instance_of?(NilClass)
           reviewers_obj = reviewers.map do |reviewer|
             {
-              username: reviewer
-
+              uuid: reviewer
             }
           end
           payload[:reviewers] = reviewers_obj
@@ -142,7 +141,7 @@ module Fastlane
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :reviewers,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_REVIEWERS",
-                                       description: "List of reviewer's usernames for the pull request. If no reviewers are passed, fails back to default ones",
+                                       description: "List of reviewer's uuids for the pull request. If no reviewers are passed, fails back to default ones",
                                        type: Array,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :source_branch,
