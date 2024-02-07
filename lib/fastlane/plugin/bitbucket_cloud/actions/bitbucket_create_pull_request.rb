@@ -12,17 +12,13 @@ module Fastlane
       def self.run(options)
         require 'excon'
 
-        company_host_name = options[:company_host_name]
-        repository_name = options[:repository_name]
         destination_branch = options[:destination_branch]
         description = options[:description]
         reviewers = options[:reviewers]
 
-        api_token = Base64.strict_encode64("#{options[:username]}:#{options[:password]}")
+        api_url = Helper::BitbucketCloudHelper.url(company_host_name: options[:company_host_name], repository_name: options[:repository_name], api: "pullrequests")
 
-        api_url = "https://api.bitbucket.org/2.0/repositories/#{company_host_name}/#{repository_name}/pullrequests"
-
-        headers = { "Content-Type": "application/json", Authorization: "Basic #{api_token}" }
+        headers = Helper::BitbucketCloudHelper.headers(username: options[:username], password: options[:password])
 
         payload = {
           title: options[:title],
@@ -68,12 +64,12 @@ module Fastlane
 
         response = Excon.post(api_url, headers: headers, body: payload)
 
-        result = self.formatted_result(response)
+        result = Helper::BitbucketCloudHelper.formatted_result(response)
 
         UI.important("Plugin Bitbucket finished with result")
         UI.important(result.to_s)
 
-        Actions.lane_context[SharedValues::BITBUCKET_CREATE_PULL_REQUEST_RESULT] = formatted_context_result(response)
+        Actions.lane_context[SharedValues::BITBUCKET_CREATE_PULL_REQUEST_RESULT] = Helper::BitbucketCloudHelper.formatted_context_result(response)
 
         if result[:status] != 201
           error_message = "Plugin Bitbucket finished with error code #{result[:status]} #{result[:reason_phrase]}"
@@ -82,27 +78,6 @@ module Fastlane
 
         UI.success("Successfully create a new Bitbucket pull request!")
         return result
-      end
-
-      def self.formatted_result(response)
-        {
-          status: response[:status],
-          reason_phrase: response[:reason_phrase],
-          body: response.body || "",
-          json: self.parse_json(response.body) || {}
-        }
-      end
-
-      def self.formatted_context_result(response)
-        "Status code: #{response[:status]}, reason: #{response[:reason_phrase]}"
-      end
-
-      def self.parse_json(value)
-        require 'json'
-
-        JSON.parse(value)
-      rescue JSON::ParserError
-        nil
       end
 
       def self.description
