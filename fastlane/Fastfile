@@ -14,3 +14,15 @@ lane :test_create_pull_request do
 
   puts response
 end
+
+desc "List default reviewers"
+lane :test_bitbucket_list_default_reviewers do
+  response = bitbucket_list_default_reviewers(
+    username: "YOUR_USERNAME_HERE",
+    password: "YOUR_PASSWORD_HERE",
+    company_host_name: "YOUR_COMPANY_HOST_HERE",
+    repository_name: "YOUR_REPOSITORY_NAME_HERE"
+  )
+
+  puts response
+end
