@@ -16,7 +16,7 @@ Wrapper of Bitbucket Cloud rest apis.
 
 The aim of this plugin is to wrap the api listed in this [wiki](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication). 
 
-For now we suppor only one api:
+For now we suppor the following apis:
 
 - [Create pull request](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests/#api-repositories-workspace-repo-slug-pullrequests-post)
 - [List default reviewers](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests/#api-repositories-workspace-repo-slug-default-reviewers-get)
