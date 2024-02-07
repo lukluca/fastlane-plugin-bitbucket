@@ -19,11 +19,12 @@ The aim of this plugin is to wrap the api listed in this [wiki](https://develope
 For now we suppor only one api:
 
 - [Create pull request](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests/#api-repositories-workspace-repo-slug-pullrequests-post)
-
+- [List default reviewers](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-pullrequests/#api-repositories-workspace-repo-slug-default-reviewers-get)
 
 For each supported api there is a plugin action available:
 
 - bitbucket_create_pull_request
+- bitbucket_list_default_reviewers
 
 ## Example
 
