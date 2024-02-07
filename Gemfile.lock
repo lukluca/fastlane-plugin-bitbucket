@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fastlane-plugin-bitbucket_cloud (0.3.0)
+    fastlane-plugin-bitbucket_cloud (0.3.1)
 
 GEM
   remote: https://rubygems.org/
