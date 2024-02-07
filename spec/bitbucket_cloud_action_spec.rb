@@ -98,7 +98,7 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
 
     context "with required fields" do
       it "succeeds with all variables given through invocation." do
-        body = "{\"title\":\"new feature title\",\"source\":{\"branch\":{\"name\":\"feture/new\"}},\"destination\":{\"branch\":{\"name\":\"develop\"}},\"description\":\"new feature description\",\"reviewers\":[{\"username\":\"l.t\"},{\"username\":\"k.s\"}]}"
+        body = "{\"title\":\"new feature title\",\"source\":{\"branch\":{\"name\":\"feture/new\"}},\"destination\":{\"branch\":{\"name\":\"develop\"}},\"description\":\"new feature description\",\"reviewers\":[{\"uuid\":\"l.t\"},{\"uuid\":\"k.s\"}]}"
 
         stub_success_post_pull_request(body)
 
