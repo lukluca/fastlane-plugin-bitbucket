@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fastlane_core/ui/ui'
 
 module Fastlane
@@ -19,15 +21,15 @@ module Fastlane
       def self.headers(options)
         api_token = Base64.strict_encode64("#{options[:username]}:#{options[:password]}")
 
-        { "Content-Type": "application/json", Authorization: "Basic #{api_token}" }
+        { 'Content-Type': 'application/json', Authorization: "Basic #{api_token}" }
       end
 
       def self.formatted_result(response)
         {
           status: response[:status],
           reason_phrase: response[:reason_phrase],
-          body: response.body || "",
-          json: self.parse_json(response.body) || {}
+          body: response.body || '',
+          json: parse_json(response.body) || {}
         }
       end
 
@@ -41,6 +43,14 @@ module Fastlane
         JSON.parse(value)
       rescue JSON::ParserError
         nil
+      end
+
+      def self.check_result(options)
+        result = options[:result]
+        return unless result[:status] != options[:status]
+
+        error_message = "Plugin Bitbucket finished with error code #{result[:status]} #{result[:reason_phrase]}"
+        raise StandardError, error_message
       end
     end
   end

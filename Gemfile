@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source('https://rubygems.org')
 
 ruby '>= 3.0.0'
@@ -20,6 +22,7 @@ gem 'rubocop', '1.50.2'
 gem 'rubocop-performance'
 # A RuboCop extension focused on enforcing tools.
 gem 'rubocop-require_tools'
+gem 'rubocop-rspec', require: false
 # SimpleCov is a code coverage analysis tool for Ruby.
 gem 'simplecov'
 gem 'webmock'
