@@ -1,12 +1,12 @@
 describe Fastlane::Actions::BitbucketCreatePullRequestAction do
   describe '#run' do
-    after :each do
-      Fastlane::FastFile.new.parse("lane :test do
+    after do
+      Fastlane::FastFile.new.parse('lane :test do
         Actions.lane_context[SharedValues::BITBUCKET_CREATE_PULL_REQUEST_RESULT] = nil
-      end").runner.execute(:test)
+      end').runner.execute(:test)
     end
 
-    it "raises an error if no username was given" do
+    it 'raises an error if username was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -24,7 +24,7 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
       end.to raise_error("No value found for 'username'")
     end
 
-    it "raises an error if no password was given" do
+    it 'raises an error if password was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -42,7 +42,7 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
       end.to raise_error("No value found for 'password'")
     end
 
-    it "raises an error if no company host name was given" do
+    it 'raises an error if company host name was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -60,7 +60,7 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
       end.to raise_error("No value found for 'company_host_name'")
     end
 
-    it "raises an error if no repository name was given" do
+    it 'raises an error if repository name was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -78,7 +78,7 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
       end.to raise_error("No value found for 'repository_name'")
     end
 
-    it "raises an error if no title was given" do
+    it 'raises an error if title was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -96,8 +96,103 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
       end.to raise_error("No value found for 'title'")
     end
 
-    context "with required fields" do
-      it "succeeds with all variables given through invocation." do
+    it 'raises an error if empty username was given' do
+      expect do
+        Fastlane::FastFile.new.parse("
+        lane :test do
+          bitbucket_create_pull_request(
+            username: '',
+            password: 'my_password',
+            company_host_name: 'myCompany',
+            repository_name: 'myRepo',
+            title: 'new feature title',
+            description: 'new feature description',
+            reviewers: ['l.t', 'k.s'],
+            source_branch: 'feture/new',
+            destination_branch: 'develop'
+        )
+        end").runner.execute(:test)
+      end.to raise_error("No value found for 'username'")
+    end
+
+    it 'raises an error if empty password was given' do
+      expect do
+        Fastlane::FastFile.new.parse("
+        lane :test do
+          bitbucket_create_pull_request(
+            username: 'my_username',
+            password: '',
+            company_host_name: 'myCompany',
+            repository_name: 'myRepo',
+            title: 'new feature title',
+            description: 'new feature description',
+            reviewers: ['l.t', 'k.s'],
+            source_branch: 'feture/new',
+            destination_branch: 'develop'
+        )
+        end").runner.execute(:test)
+      end.to raise_error("No value found for 'password'")
+    end
+
+    it 'raises an error if empty company host name was given' do
+      expect do
+        Fastlane::FastFile.new.parse("
+        lane :test do
+          bitbucket_create_pull_request(
+            username: 'my_username',
+            password: 'my_password',
+            company_host_name: '',
+            repository_name: 'myRepo',
+            title: 'new feature title',
+            description: 'new feature description',
+            reviewers: ['l.t', 'k.s'],
+            source_branch: 'feture/new',
+            destination_branch: 'develop'
+        )
+        end").runner.execute(:test)
+      end.to raise_error("No value found for 'company_host_name'")
+    end
+
+    it 'raises an error if empty repository name was given' do
+      expect do
+        Fastlane::FastFile.new.parse("
+        lane :test do
+          bitbucket_create_pull_request(
+            username: 'my_username',
+            password: 'my_password',
+            company_host_name: 'myCompany',
+            repository_name: '',
+            title: 'new feature title',
+            description: 'new feature description',
+            reviewers: ['l.t', 'k.s'],
+            source_branch: 'feture/new',
+            destination_branch: 'develop'
+        )
+        end").runner.execute(:test)
+      end.to raise_error("No value found for 'repository_name'")
+    end
+
+    it 'raises an error if empty title was given' do
+      expect do
+        Fastlane::FastFile.new.parse("
+        lane :test do
+          bitbucket_create_pull_request(
+            username: 'my_username',
+            password: 'my_password',
+            company_host_name: 'myCompany',
+            repository_name: 'myRepo',
+            title: '',
+            description: 'new feature description',
+            reviewers: ['l.t', 'k.s'],
+            source_branch: 'feture/new',
+            destination_branch: 'develop'
+        )
+        end").runner.execute(:test)
+      end.to raise_error("No value found for 'title'")
+    end
+
+    context 'with required fields' do
+      it 'succeeds with all variables given through invocation.' do
         body = "{\"title\":\"new feature title\",\"source\":{\"branch\":{\"name\":\"feture/new\"}},\"destination\":{\"branch\":{\"name\":\"develop\"}},\"description\":\"new feature description\",\"reviewers\":[{\"uuid\":\"l.t\"},{\"uuid\":\"k.s\"}]}"
 
         stub_success_post_pull_request(body)
@@ -116,11 +211,10 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
                 destination_branch: 'develop'
             )
           end").runner.execute(:test)
-        expect(!response.nil?)
-        expect(!ENV["BITBUCKET_CREATE_PULL_REQUEST_RESULT"].nil?)
+        expect(response).to eq({ body: "", json: {}, reason_phrase: "", status: 201 })
       end
 
-      it "succeeds with required variables given through invocation." do
+      it 'succeeds with required variables given through invocation.' do
         body = "{\"title\":\"new feature title\",\"source\":{\"branch\":{\"name\":\"feture/new\"}}}"
 
         stub_success_post_pull_request(body)
@@ -136,12 +230,10 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
                 source_branch: 'feture/new'
             )
           end").runner.execute(:test)
-        expect(!response.nil?)
-        expect(!ENV["BITBUCKET_CREATE_PULL_REQUEST_RESULT"].nil?)
-        expect(ENV["BITBUCKET_CREATE_PULL_REQUEST_RESULT"] == "Status code: 201, reason:")
+        expect(response).to eq({ body: "", json: {}, reason_phrase: "", status: 201 })
       end
 
-      it "fails with required variables given through invocation." do
+      it 'fails with required variables given through invocation.' do
         body = "{\"title\":\"new failure feature title\",\"source\":{\"branch\":{\"name\":\"feture/new\"}}}"
 
         sub_failed_post_pull_request(body)
@@ -158,15 +250,34 @@ describe Fastlane::Actions::BitbucketCreatePullRequestAction do
                 )
               end").runner.execute(:test)
       rescue StandardError => e
-        expect(!ENV["BITBUCKET_CREATE_PULL_REQUEST_RESULT"].nil?)
-        expect(ENV["BITBUCKET_CREATE_PULL_REQUEST_RESULT"] == "Status code: 401, reason:")
+        expect(e.message).to eq('Plugin Bitbucket finished with error code 401 ')
       end
     end
 
-    it "supports all platforms" do
-      expect(Fastlane::Actions::BitbucketCreatePullRequestAction.is_supported?(:ios)).to be(true)
-      expect(Fastlane::Actions::BitbucketCreatePullRequestAction.is_supported?(:android)).to be(true)
-      expect(Fastlane::Actions::BitbucketCreatePullRequestAction.is_supported?(:mac)).to be(true)
+    it 'supports all platforms' do
+      expect(described_class.is_supported?(:ios)).to be(true)
+      expect(described_class.is_supported?(:android)).to be(true)
+      expect(described_class.is_supported?(:mac)).to be(true)
+    end
+
+    it 'has correct description' do
+      expect(described_class.description).to eq('Create a new pull request inside your Bitbucket project')
+    end
+
+    it 'has correct details' do
+      expect(described_class.details).to eq('Wrapper of Bitbucket cloud rest apis in order to make easy integration of Bitbucket CI inside fastlane workflow')
+    end
+
+    it 'has correct authors' do
+      expect(described_class.authors).to eq(['Luca Tagliabue'])
+    end
+
+    it 'has correct output' do
+      expect(described_class.output).to eq([['BITBUCKET_CREATE_PULL_REQUEST_RESULT', 'The result of the bitbucket pullrequests cloud api']])
+    end
+
+    it 'has correct return_value' do
+      expect(described_class.return_value).to eq('The result of the bitbucket pullrequests cloud api')
     end
   end
 end
@@ -203,13 +314,13 @@ end
 
 describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
   describe '#run' do
-    after :each do
+    after do
       Fastlane::FastFile.new.parse("lane :test do
         Actions.lane_context[SharedValues::BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT] = nil
       end").runner.execute(:test)
     end
 
-    it "raises an error if no username was given" do
+    it 'raises an error if username was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -222,7 +333,7 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
       end.to raise_error("No value found for 'username'")
     end
 
-    it "raises an error if no password was given" do
+    it 'raises an error if password was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -235,7 +346,7 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
       end.to raise_error("No value found for 'password'")
     end
 
-    it "raises an error if no company host name was given" do
+    it 'raises an error if company host name was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -248,7 +359,7 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
       end.to raise_error("No value found for 'company_host_name'")
     end
 
-    it "raises an error if no repository name was given" do
+    it 'raises an error if repository name was not given' do
       expect do
         Fastlane::FastFile.new.parse("
         lane :test do
@@ -261,8 +372,8 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
       end.to raise_error("No value found for 'repository_name'")
     end
 
-    context "with required fields" do
-      it "succeeds with required variables given through invocation." do
+    context 'with required fields' do
+      it 'succeeds with required variables given through invocation.' do
         stub_success_get_default_reviewers_list
 
         response = Fastlane::FastFile.new.parse("
@@ -274,12 +385,10 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
                 repository_name: 'myRepo'
             )
           end").runner.execute(:test)
-        expect(!response.nil?)
-        expect(!ENV["BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT"].nil?)
-        expect(ENV["BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT"] == "Status code: 200, reason:")
+        expect(response).to eq({ body: "", json: {}, reason_phrase: "", status: 200 })
       end
 
-      it "fails with required variables given through invocation." do
+      it 'fails with required variables given through invocation.' do
         stub_failed_get_default_reviewers_list
 
         Fastlane::FastFile.new.parse("
@@ -292,15 +401,34 @@ describe Fastlane::Actions::BitbucketListDefaultReviewersAction do
                 )
               end").runner.execute(:test)
       rescue StandardError => e
-        expect(!ENV["BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT"].nil?)
-        expect(ENV["BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT"] == "Status code: 401, reason:")
+        expect(e.message).to eq('Plugin Bitbucket finished with error code 401 ')
       end
     end
 
-    it "supports all platforms" do
-      expect(Fastlane::Actions::BitbucketListDefaultReviewersAction.is_supported?(:ios)).to be(true)
-      expect(Fastlane::Actions::BitbucketListDefaultReviewersAction.is_supported?(:android)).to be(true)
-      expect(Fastlane::Actions::BitbucketListDefaultReviewersAction.is_supported?(:mac)).to be(true)
+    it 'supports all platforms' do
+      expect(described_class.is_supported?(:ios)).to be(true)
+      expect(described_class.is_supported?(:android)).to be(true)
+      expect(described_class.is_supported?(:mac)).to be(true)
+    end
+
+    it 'has correct description' do
+      expect(described_class.description).to eq('List of all defaults reviewers of pull requests')
+    end
+
+    it 'has correct details' do
+      expect(described_class.details).to eq('Wrapper of Bitbucket cloud rest apis in order to make easy integration of Bitbucket CI inside fastlane workflow')
+    end
+
+    it 'has correct authors' do
+      expect(described_class.authors).to eq(['Luca Tagliabue'])
+    end
+
+    it 'has correct output' do
+      expect(described_class.output).to eq([['BITBUCKET_LIST_DEFAULT_REVIEWERS_RESULT', 'The result of the bitbucket default-reviewers cloud api']])
+    end
+
+    it 'has correct return_value' do
+      expect(described_class.return_value).to eq('The result of the bitbucket default-reviewers cloud api')
     end
   end
 end

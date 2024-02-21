@@ -2,6 +2,7 @@
 require:
 - rubocop/require_tools
 - rubocop-performance
+- rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.6
   NewCops: enable

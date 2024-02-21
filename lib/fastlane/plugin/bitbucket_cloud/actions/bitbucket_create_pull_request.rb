@@ -97,47 +97,40 @@ module Fastlane
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_USERNAME",
                                        description: "Bitbucket username",
                                        sensitive: true,
-                                       code_gen_sensitive: true,
-                                       is_string: true,
-                                       default_value: ENV.fetch("BITBUCKET_USERNAME", nil),
-                                       default_value_dynamic: true,
-                                       optional: false),
+                                       type: String,
+                                       optional: false,
+                                       verify_block: ->(value) { verify_option(key: "username", value: value) }),
           FastlaneCore::ConfigItem.new(key: :password,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_PASSWORD",
                                        description: "Bitbucket password",
                                        sensitive: true,
-                                       code_gen_sensitive: true,
-                                       is_string: true,
-                                       default_value: ENV.fetch("BITBUCKET_PASSWORD", nil),
-                                       default_value_dynamic: true,
-                                       optional: false),
+                                       type: String,
+                                       optional: false,
+                                       verify_block: ->(value) { verify_option(key: "password", value: value) }),
           FastlaneCore::ConfigItem.new(key: :company_host_name,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_COMPANY_HOST_NAME",
                                        description: "Bitbucket company host name",
                                        sensitive: true,
-                                       code_gen_sensitive: true,
-                                       is_string: true,
-                                       default_value: ENV.fetch("BITBUCKET_COMPANY_HOST_NAME", nil),
-                                       default_value_dynamic: true,
-                                       optional: false),
+                                       type: String,
+                                       optional: false,
+                                       verify_block: ->(value) { verify_option(key: "company_host_name", value: value) }),
           FastlaneCore::ConfigItem.new(key: :repository_name,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_REPOSITORY_NAME",
                                        description: "Bitbucket repository name",
                                        sensitive: true,
-                                       code_gen_sensitive: true,
-                                       is_string: true,
-                                       default_value: ENV.fetch("BITBUCKET_REPOSITORY_NAME", nil),
-                                       default_value_dynamic: true,
-                                       optional: false),
+                                       type: String,
+                                       optional: false,
+                                       verify_block: ->(value) { verify_option(key: "repository_name", value: value) }),
           FastlaneCore::ConfigItem.new(key: :title,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_TITLE",
                                        description: "Title of the pull request",
-                                       is_string: true,
-                                       optional: false),
+                                       type: String,
+                                       optional: false,
+                                       verify_block: ->(value) { verify_option(key: "title", value: value) }),
           FastlaneCore::ConfigItem.new(key: :description,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_DESCRIPTION",
                                        description: "Description of the pull request",
-                                       is_string: true,
+                                       type: String,
                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :reviewers,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_REVIEWERS",
@@ -147,24 +140,28 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :source_branch,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_SOURCE_BRANCH",
                                        description: "Name of the source branch",
-                                       is_string: true,
+                                       type: String,
                                        optional: false),
           FastlaneCore::ConfigItem.new(key: :destination_branch,
                                        env_name: "FL_POST_BITBUCKET_PULL_REQUEST_DESTINATION_BRANCH",
                                        description: "Name of the destination branch",
-                                       is_string: true,
+                                       type: String,
                                        optional: true)
         ]
       end
 
+      def self.verify_option(options)
+        UI.user_error!("No value found for '#{options[:key]}'") if options[:value].to_s.length == 0
+      end
+
       def self.output
         [
-          ['BITBUCKET_CREATE_PULL_REQUEST_RESULT', 'The result of the bitbucket rest cloud api']
+          ['BITBUCKET_CREATE_PULL_REQUEST_RESULT', 'The result of the bitbucket pullrequests cloud api']
         ]
       end
 
       def self.return_value
-        'The result of the bitbucket rest cloud api'
+        'The result of the bitbucket pullrequests cloud api'
       end
 
       def self.example_code
