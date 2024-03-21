@@ -20,9 +20,10 @@ gem 'rspec_junit_formatter'
 gem 'rubocop', '1.50.2'
 # A collection of RuboCop cops for performance optimizations.
 gem 'rubocop-performance'
+gem 'rubocop-rake'
 # A RuboCop extension focused on enforcing tools.
 gem 'rubocop-require_tools'
-gem 'rubocop-rspec', require: false
+gem 'rubocop-rspec'
 # SimpleCov is a code coverage analysis tool for Ruby.
 gem 'simplecov'
 gem 'webmock'
